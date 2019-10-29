@@ -1,4 +1,4 @@
-<button type="button" class="btn" (click)="getTool();basicModal.show()" mdbRippleRadius>Update</button>
+<button type="button" class="btn btn-responsive update" (click)="getTool();basicModal.show()" mdbRippleRadius>Update</button>
 
   <div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
     aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
@@ -18,7 +18,7 @@
               Year Manufactured <input class='form-control' type="text" name="manufactureYear" value="{{toolToBeUpdated.manufactureYear}}" [(ngModel)]="toolToBeUpdated.manufactureYear">
               Condition <input class='form-control' type="text" name="condition" value="{{toolToBeUpdated.condition}}" [(ngModel)]="toolToBeUpdated.condition">
               Cost <input class='form-control'type="number" name="costPerDay" value="{{toolToBeUpdated.costPerDay}}" [(ngModel)]="toolToBeUpdated.costPerDay">
-            <button type="button" class="btn" (click)="updateTool();basicModal.hide();" mdbRippleRadius>Update</button>
+            <button type="button" class="btn btn-modal " (click)="updateTool();basicModal.hide();" mdbRippleRadius>Update</button>
           </form>
         </div>
       </div>

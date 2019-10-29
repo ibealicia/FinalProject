@@ -1,4 +1,4 @@
-<button type="button" class="btn relative waves-light" (click)="getReviewOfRenter();basicModal.show()" mdbRippleRadius>Update Review</button>
+<button type="button" class="btn btn-responsive review" (click)="getReviewOfRenter();basicModal.show()" mdbRippleRadius>Review</button>
 
   <div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
     aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
@@ -32,7 +32,7 @@
             </label>
             <br>
 
-            <button type="button" class="btn btn-primary relative waves-light" (click)="updateReviewOfRenter();basicModal.hide();" mdbRippleRadius>Update</button>
+            <button type="button" class="btn btn-modal relative waves-light" (click)="updateReviewOfRenter();basicModal.hide();" mdbRippleRadius>Update</button>
           </form>
           <app-delete-review-renter [toolTransaction]="toolTransaction" [reviewToBeDeleted]="reviewToBeUpdated"></app-delete-review-renter>
         </div>

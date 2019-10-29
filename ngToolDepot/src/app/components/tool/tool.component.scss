@@ -48,6 +48,7 @@ a {
 }
 .card-footer {
   background-color: #dfa000;
+  padding: 5px;
 }
 .footer {
   color: #f2ebe4 !important;
@@ -60,11 +61,14 @@ a {
 }
 
 #toolName {
-  color: lightgray;
+  color: #dfa000;
 }
 
 #toolName:hover {
-  color: darkgrey;
+  color: #F9d31a;
+}
+p.footer {
+  margin: 0;
 }
 
 

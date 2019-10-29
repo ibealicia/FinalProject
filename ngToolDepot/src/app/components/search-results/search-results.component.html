@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col scroll" id="listOfSearchedTools">
+    <div class="col-sm-6 scroll" id="listOfSearchedTools">
       <!-- TRYING WITH CARD  -->
       <!-- Card Light -->
       <div class="card">
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    <div id="map" class="col">
+    <div id="map" class="col-sm-6">
       <agm-map #gm [latitude]="lat" [longitude]="lng" [zoom]="10" [scrollwheel]="false">
         <agm-marker *ngFor="let coordinate of coordinates; let i = index" [latitude]="coordinate.lat"
           [longitude]="coordinate.lng">

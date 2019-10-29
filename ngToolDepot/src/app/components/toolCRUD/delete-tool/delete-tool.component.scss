@@ -10,15 +10,49 @@
 
 .btn {
   display: block;
-  width: 100%;
-  background-color: #DFA000;
+  background-color: #646264;
+  color:#DFA000;
+  font-weight: bold;
+}
+.btn.delete {
+  display: block;
+  width: 95%;
+  float: right;
+  background-color: #646264;
+  color:#DFA000;
+  font-weight: bold;
+}
+.btn.delete:hover {
+  display: block;
+  width: 95%;
+  float: right;
+  background-color: #3D3B3D;
   color: red;
   font-weight: bold;
 }
 
 .btn-success {
   color: #3D3B3D !important;
+  width: 100%;
+
 }
 .btn-danger {
   color: #3D3B3D !important;
+  width: 100%;
+
+}
+@media (max-width: 768px) {
+  .btn-responsive {
+    padding:2px 4px;
+    font-size:80%;
+    line-height: 1;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .btn-responsive {
+    padding:4px 9px;
+    font-size:90%;
+    line-height: 1.2;
+  }
 }

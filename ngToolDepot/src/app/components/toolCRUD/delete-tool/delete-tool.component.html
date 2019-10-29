@@ -1,4 +1,4 @@
-<button type="button" class="btn" (click)="basicModal.show()" mdbRippleRadius>Delete
+<button type="button" class="btn btn-responsive delete" (click)="basicModal.show()" mdbRippleRadius>Delete
 </button>
 
 <div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
@@ -15,7 +15,7 @@
           <br>
           <button type="button" class="btn btn-success" aria-label="Close" (click)="basicModal.hide()"
             mdbRippleRadius>No</button>
-          <button type="button" class="btn btn-warning" (click)="delete(); basicModal.hide();" mdbRippleRadius>Yes</button>
+          <button type="button" class="btn btn-danger" (click)="delete(); basicModal.hide();" mdbRippleRadius>Yes</button>
       </div>
     </div>
   </div>

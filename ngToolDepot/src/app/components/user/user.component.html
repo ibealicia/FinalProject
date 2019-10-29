@@ -1,31 +1,17 @@
 <div class="userpage">
-    <div class="container-fluid">
         <div class="row">
           <div class="col-sm-12">
             <div class="card">
-    ​
-              <!-- badge for total lent/rented out/money -->
-              <h2 class="card-header text-dark bg-warning"><span>{{loggedInUser.firstName}}</span>
-                <!-- <span class="badge badge-pill badge-dark m-2">{{loggedInUser.firstName}}</span> -->
-                 <span>
-                   <div *ngIf="loggedInUser.role !== 'admin'">
-                   <button mdbBtn class="btn btn-elegant btn-small float-right" type="button" (click)="
-                   disableProfile();
-                 " mdbWavesEffect>Delete Profile</button></div>
-                   <button mdbBtn class="btn btn-elegant btn-small float-right" type="button" (click)="
-                 editProfile.toggle();
-               " mdbWavesEffect>Edit Profile</button>
-                  <!-- >Tool Count/Money Earned -->
-                  <!-- </span> -->
-                 </span>  </h2>
+              <div class="card-header bg-warning">
+                <span><h2>{{loggedInUser.firstName}}</h2></span>
+                   <span><button *ngIf="loggedInUser.role !== 'admin'" mdbBtn class="btn btn-head float-right" type="button" (click)="disableProfile()" mdbWavesEffect>Delete Profile</button></span>
+                   <span><button mdbBtn class="btn btn-head float-right" type="button" (click)="editProfile.toggle();" mdbWavesEffect>Edit Profile</button></span>
+              </div>
                 <div class="card-horizontal">
-                  <div class="img-square-wrapper">
-                    <!-- <div class="img-square-wrapper bg-dark"> -->
-                      <img class="img-thumbnail" [src]="loggedInUser.photo" alt="Cinque Terre" width="300" height="300"
-                      alt="Card image cap" />
+                  <div *ngIf="loggedInUser.role !== 'admin'"class="img-square-wrapper">
+                      <img class="img-thumbnail" [src]="loggedInUser.photo" alt="user photo" width="300" height="300"/>
                     </div>
                     <div class="card-body">
-                      <!-- <p class="card-text "> -->
                           <div class="Profile" mdbCollapse #editProfile="bs-collapse">
                               <h5>Update Your Personal Information</h5>
                               <form >
@@ -47,8 +33,9 @@
                                   <input class="form-control" placeholder="{{loggedInUser.address.city}}" name="city" [(ngModel)]="loggedInUser.address.city">
                                   <input class="form-control" placeholder="Zip Code" name="zip" [(ngModel)]="loggedInUser.address.zip">
                                   <select >
-                                    <option *ngFor="let state of states" [(ngModel)]="loggedInUser.address.state" name=state>
-                                      {{loggedInUser.address.state}}
+                                    <option value="" selected>{{loggedInUser.address.state}}</option>
+                                    <option *ngFor="let state of states" [(ngModel)]="loggedInUser.address.state"  name=state>
+                                      {{state}}
                                     </option>
                                   </select>
                                 </div><br>
@@ -56,27 +43,22 @@
                               </form>
                               <!-- </p> -->
                             </div>
-                            <table class="table table-striped">
-                              <thead  class="dark text-dark">
+                            <table class="table table-striped table-responsive">
+                              <thead  class="text-dark">
                                 <!-- <tr>Your Tool Loans</tr> -->
-                                <tr><h3>
+                                <tr>
                                   <div>
-                                    <p><strong>First Name:</strong> {{loggedInUser.firstName}}<p>
-                                      <p><strong>Last Name:</strong> {{loggedInUser.lastName}}</p>
+                                    <p><strong>Name:</strong> {{loggedInUser.firstName}}&nbsp;<strong></strong> {{loggedInUser.lastName}}</p>
                                       <p><strong>Email:</strong> {{loggedInUser.email}}</p>
                                       <p><strong>Phone:</strong> {{loggedInUser.phone}}</p>
                                     </div>
                                     <div>
                                       <p><strong>Street:</strong> {{loggedInUser.address.street}}</p>
-                                      <p><strong>City:</strong> {{loggedInUser.address.city}}</p>
-                                      <p><strong>State:</strong> {{loggedInUser.address.state}}</p>
-                                      <p><strong>Zip:</strong> {{loggedInUser.address.zip}}<p>
-                                      </div> </h3> </tr>
+                                      <p></p><strong>City:</strong> {{loggedInUser.address.city}}&nbsp;<strong>State:</strong> {{loggedInUser.address.state}}&nbsp;<strong>Zip:</strong> {{loggedInUser.address.zip}}<p>
+                                      </div> </tr>
                                     </thead>
                                   </table>
                                   <app-add-tool styles="float-right" [user]="this.loggedInUser"></app-add-tool>
-                                  ​
-    ​
               </div>
             </div>
                 <div  class="card-footer text-white bg-warning">
@@ -85,30 +67,30 @@
         </div>
       </div>
       <div *ngIf="loggedInUser.role === 'user'">
-        <button mdbBtn class=" btn btn-elegant btn-block" type="button"
+        <button mdbBtn class=" btn btn-block " type="button"
           (click)="MyTransactions.toggle(); getLoggedInUserTransactions()" mdbWavesEffect>
           My Transaction History
         </button>
-        <div class="tranasaction" mdbCollapse #MyTransactions="bs-collapse">
+        <div class="tranasaction col-sm-12" mdbCollapse #MyTransactions="bs-collapse">
           <div id="listToolRentals" *ngIf="!selected">
-            <table *ngIf="!selected && myToolLoans.length !== 0" class="table table-striped table-dark">
-                <thead  class="dark text-warning">
+            <div class='table-responsive'>
+            <table *ngIf="!selected && myToolLoans.length !== 0" class="table table-striped">
+                <thead>
                   <!-- <tr>Your Tool Loans</tr> -->
                 <tr>
-                  <td>My Tools Rented Out</td>
-                  <td align="left">Tool Name</td>
-                  <td align="left">Renter</td>
-                  <td align="left">Checked out</td>
-                  <td align="left">Returned</td>
-                  <td align="left">Total Cost</td>
+                  <th>My Tools Rented Out</th>
+                  <th align="left">Tool Name</th>
+                  <th align="left">Renter</th>
+                  <th align="left">Checked out</th>
+                  <th align="left">Returned</th>
+                  <th align="left">Total Cost</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let loan of myToolLoans">
                   <td>
                       <div class="img-square-wrapper">
-                          <img class="img-thumbnail" [src]="loan.tool.photos[0].photoUrl" alt="Cinque Terre" width="150" height="150"
-                            alt="Card image cap" />
+                          <img class="img-thumbnail" [src]="loan.tool.photos[0].photoUrl" alt="tool photo" width="150" height="150"/>
                         </div>
                   </td>
                   <td (click)='redirectTool(loan)'>{{loan.tool.name}}</td>
@@ -127,24 +109,25 @@
                 </tr>
               </tbody>
             </table>
-            <table *ngIf="!selected && myToolRentals.length !== 0" class="table table-striped table-dark">
-                <thead  class="dark text-warning">
+          </div>
+          <div class='table-responsive'>
+            <table *ngIf="!selected && myToolRentals.length !== 0" class="table table-striped">
+                <thead>
                     <!-- <tr>Your Tool Rentals</tr> -->
                 <tr>
-                  <td>Tools I Rented</td>
-                  <td align="left">Tool Name</td>
-                  <td align="left">Tool Owner</td>
-                  <td align="left">Checked out</td>
-                  <td align="left">Returned</td>
-                  <td align="left">Total Cost</td>
+                  <th>Tools I Rented</th>
+                  <th align="left">Tool Name</th>
+                  <th align="left">Tool Owner</th>
+                  <th align="left">Checked out</th>
+                  <th align="left">Returned</th>
+                  <th align="left">Total Cost</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let rental of myToolRentals">
                   <td>
                       <div class="img-square-wrapper">
-                          <img class="img-thumbnail" [src]="rental.tool.photos[0].photoUrl" alt="Cinque Terre" width="150" height="150"
-                            alt="Card image cap" />
+                          <img class="img-thumbnail" [src]="rental.tool.photos[0].photoUrl" alt="tool photo" width="150" height="150"/>
                         </div>
                   </td>
                     <td (click)='redirectTool(rental)'>{{rental.tool.name}}</td>
@@ -160,46 +143,47 @@
                     <div *ngIf="rental.renterReview !== null">
                       <app-edit-review-renter [toolTransaction]="rental"></app-edit-review-renter>
                     </div>
-    ​
                 </tr>
               </tbody>
             </table>
           </div>
+          </div>
         </div>
       </div>
-    ​
       <div *ngIf="loggedInUser.role === 'user'">
-        <button mdbBtn class="btn btn-elegant btn-block" type="button" (click)="
+        <button mdbBtn class="btn btn-block" type="button" (click)="
           toolListDiv.toggle(); getLoggedInUserTools()
         " mdbWavesEffect>
           My Toolbox
         </button>
-        <div class="toolList" mdbCollapse #toolListDiv="bs-collapse">
+        <div class="toolList col-sm-12" mdbCollapse #toolListDiv="bs-collapse">
           <div id="listMyTools">
-            <table class="table table-striped table-dark">
-                <thead  class="dark text-warning">
+            <div class='table-responsive'>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                  <td align="left"></td>
-                  <td align="left">Name</td>
-                  <td align="left">Type</td>
-                  <td align="left">Description</td>
-                  <td align="left">Condition</td>
-                  <td align="left">Cost Per Day</td>
-                  <td align="left">Available For Rent</td>
-                  <td align="left"></td>
+                  <th align="left"></th>
+                  <th align="left">Name</th>
+                  <th align="left">Type</th>
+                  <th align="left">Description</th>
+                  <th align="left">Condition</th>
+                  <th align="left">Cost</th>
+                  <th align="left">Available For Rent</th>
+                  <th align="left"></th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let myTool of myTools">
+                  <td>
                   <div class="img-square-wrapper">
-                    <img class="img-thumbnail" [src]="myTool.photos[0].photoUrl" alt="Cinque Terre" width="300" height="300"
-                      alt="Card image cap" />
+                    <img class="img-thumbnail" [src]="myTool.photos[0].photoUrl" alt="tool photo"/>
                   </div>
+                  </td>
                   <td>{{ myTool.name }}</td>
                   <td>{{ myTool.type }}</td>
                   <td>{{ myTool.description }}</td>
                   <td>{{ myTool.condition }}</td>
-                  <td>{{ myTool.costPerDay | currency}}</td>
+                  <td>{{ myTool.costPerDay | currency}}/day</td>
                   <td>{{ myTool.available }}</td>
                   <app-update-tool [tool]="myTool"></app-update-tool>
                   <app-delete-tool [tool]="myTool"></app-delete-tool>
@@ -207,31 +191,32 @@
               </tbody>
             </table>
           </div>
+          </div>
         </div>
       </div>
       <div *ngIf="loggedInUser.role === 'admin'">
-        <button mdbBtn class="btn btn-elegant btn-block" type="button" (click)="allUsers.toggle(); getAllUsers()"
+        <button mdbBtn class="btn btn-block" type="button" (click)="allUsers.toggle(); getAllUsers()"
           mdbWavesEffect>
           Manage All Users
         </button>
-        <div class="adminUsers" mdbCollapse #allUsers="bs-collapse">
+        <div class="adminUsers col-sm-12" mdbCollapse #allUsers="bs-collapse">
           <div id="showAllUsers" *ngIf="!selected">
-            <table *ngIf="!selected" class="table table-striped table-dark">
-                <thead  class="dark text-warning">
+            <div class='table-responsive'>
+            <table *ngIf="!selected" class="table table-striped">
+                <thead>
                     <tr>
-                  <td align="left">ID</td>
-                  <td align="left">Photo</td>
-                  <td align="left">User Name</td>
-                  <td align="left">Role</td>
-                  <td align="left">First Name</td>
-                  <td align="left">Last Name</td>
-                  <td align="left">Phone</td>
-                  <td align="left">Email</td>
-                  <td align="left">Creation Date</td>
-                  <td align="left">Updated Date</td>
-                  <td align="left">Rentals</td>
-                  <td align="left">Enabled</td>
-                  <td></td>
+                  <th align="left">ID</th>
+                  <th align="left">Photo</th>
+                  <th align="left">User Name</th>
+                  <th align="left">Role</th>
+                  <th align="left">First Name</th>
+                  <th align="left">Last Name</th>
+                  <th align="left">Phone</th>
+                  <th align="left">Email</th>
+                  <th align="left">Creation Date</th>
+                  <th align="left">Updated Date</th>
+                  <th align="left">Rentals</th>
+                  <th align="left">Enabled</th>
                 </tr>
               </thead>
               <tbody>
@@ -239,8 +224,7 @@
                   <td>{{user.id}}</td>
                   <td>
                     <div class="img-square-wrapper">
-                      <img class="img-thumbnail" [src]="user.photo" alt="Cinque Terre" width="75" height="75"
-                        alt="Card image cap" />
+                      <img class="img-thumbnail" [src]="user.photo" alt="admin photo" width="75" height="75"/>
                     </div>
                   </td>
                   <td>{{user.username}}</td>
@@ -254,24 +238,25 @@
                   <td>{{ user.toolRentals }}</td>
                   <td>{{ user.enabled}}</td>
                   <div *ngIf="user.role !== 'admin'">
-                    <td><button class="btn btn-dark relative waves-light" (click)="disableUser(user)">Switch Enabled</button></td>
+                    <td><button class="btn btn-responsive disable" (click)="disableUser(user)">Switch Enabled</button></td>
                   </div>
                 </tr>
               </tbody>
             </table>
           </div>
+          </div>
         </div>
       </div>
-    ​
       <div *ngIf="loggedInUser.role === 'admin'">
-        <button mdbBtn class="btn btn-elegant btn-block" type="button" (click)="
+        <button mdbBtn class="btn btn-block" type="button" (click)="
           adminTools.toggle(); getAllTools()" mdbWavesEffect>
           All Users Toolbox
         </button>
-        <div class="userToolList" mdbCollapse #adminTools="bs-collapse">
+        <div class="userToolList col-sm-12" mdbCollapse #adminTools="bs-collapse">
           <div id="listAllUserTools">
-            <table class="table table-striped table-dark">
-                <thead  class="dark text-warning">
+            <div class='table-responsive'>
+            <table class="table table-striped ">
+                <thead  class="text-warning">
                     <tr>
                   <td align="left"></td>
                   <td align="left">Name</td>
@@ -279,13 +264,12 @@
                   <td align="left">Description</td>
                   <td align="left">Condition</td>
                   <td align="left">Cost Per Day</td>
-                  <td align="left">Available For Rent</td>
+                  <td align="left">Available</td>
                   <td align="left"></td>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let tool of allTools">
-    ​
                   <div class="img-square-wrapper">
                     <img class="img-thumbnail" [src]="tool.photos[0].photoUrl" alt="Cinque Terre" width="300" height="300"
                       alt="Card image cap" />
@@ -294,13 +278,14 @@
                   <td>{{ tool.type }}</td>
                   <td>{{ tool.description }}</td>
                   <td>{{ tool.condition }}</td>
-                  <td>{{ tool.costPerDay | currency}}</td>
+                  <td>{{ tool.costPerDay | currency}}/day</td>
                   <td>{{ tool.available }}</td>
                   <app-update-tool [tool]="tool"></app-update-tool>
                   <!-- <td><button class="btn btn-dark relative waves-light">Delete</button></td> -->
                 </tr>
               </tbody>
             </table>
+          </div>
           </div>
         </div>
       </div>

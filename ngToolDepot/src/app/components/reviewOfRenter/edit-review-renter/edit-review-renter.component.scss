@@ -15,15 +15,44 @@
 .btn {
   display: block;
   width: 100%;
-  background-color: #DFA000;
-  color: #3D3B3D;
+  background-color: #646264;
+  color: #DFA000;
   font-weight: bold;
 }
-// a {
-//   color: #dfa000;
-//   font-weight: bold;
-// }
+
 .btn:hover {
   color: #F9d31a;
   font-weight: bold;
+}
+
+.btn.review {
+  display: block;
+  width: 85%;
+  float: right;
+  background-color: #646264;
+  color: #DFA000;
+  font-weight: bold;
+}
+.btn.review:hover {
+  display: block;
+  width: 85%;
+  float: right;
+  background-color: #3D3B3D;
+  color: #F9d31a;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  .btn-responsive {
+    padding:2px 4px;
+    font-size:80%;
+    line-height: 1;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .btn-responsive {
+    padding:4px 9px;
+    font-size:90%;
+    line-height: 1.2;
+  }
 }

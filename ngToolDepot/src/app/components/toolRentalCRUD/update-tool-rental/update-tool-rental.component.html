@@ -1,5 +1,4 @@
-<button type="button" class="btn" (click)="basicModal.show()" mdbRippleRadius>Update
-</button>
+<button type="button" class="btn btn-responsive update" (click)="basicModal.show()" mdbRippleRadius>Update</button>
 <!-- <button type="button" class="btn btn-amber text-dark relative waves-light" (click)="basicModal.show()" mdbRippleRadius>Update
   </button> -->
 <div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
@@ -21,7 +20,7 @@
             Number of days:
             <input class="form-control" type="number" name="numberOfDays" [(ngModel)]="numberOfDays">
 
-          <button type="button" class="btn" (click)="updateToolRental();basicModal.hide();" mdbRippleRadius>Save Changes</button>
+          <button type="button" class="btn btn-modal" (click)="updateToolRental();basicModal.hide();" mdbRippleRadius>Save Changes</button>
         </form>
       </div>
     </div>

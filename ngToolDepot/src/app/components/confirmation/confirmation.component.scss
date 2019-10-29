@@ -2,7 +2,7 @@
   background: #646264;
 }
 .confirm {
-  color: #dfa000;
+  color: #3D3B3D;
 }
 .card, .card-body {
   width: 100%;
@@ -15,11 +15,34 @@
 }
 .card-header, .card-footer {
   width: 100%;
+  text-align: center;
 }
 h3 {
   align-items: center;
   justify-content: center;
 }
+.card-header {
+  background-color: #dfa000;
+}
+.card-body {
+  color: #3D3B3D;
+  font-weight: bold;
+  text-align: center;
+}
+.card-footer {
+  background-color: #dfa000;
+  padding: 5px;
+}
+.footer {
+  color: #f2ebe4 !important;
+}
+.footer:hover {
+  color: #646264 !important;
+}
+.card {
+  border-color: #3D3B3D;
+  background-color: #f2ebe4;
 
+}
 
 

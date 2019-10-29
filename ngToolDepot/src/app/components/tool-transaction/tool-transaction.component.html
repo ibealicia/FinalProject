@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-      <div class="col-fluid">
+      <div class="col-sm-12">
         <div class="card">
           <h3 class="card-header text-dark bg-warning">
             <span class="tool-name">{{displayTool.name}}&nbsp;&nbsp;</span>
@@ -9,21 +9,23 @@
                 uncheckedcolor="black" size="flex" readonly="true"></star-rating> -->
             </span>
             <span class="cost">{{displayTool.costPerDay | currency}}/day</span></h3>
-          <div class="card-horizontal">
-            <div class="img-square-wrapper">
-              <img class="" [src]="displayTool.photos[0].photoUrl" class="" alt="Cinque Terre" width="250" height="250"
-                alt="Card image cap" />
+          <div class="card-horizontal responsive-horizontal">
+            <div class="img-square-wrapper card-image">
+              <img class="" [src]="displayTool.photos[0].photoUrl" class="" alt="tool photo" width="250" height="250"/>
             </div>
-            <div class="card-body">
-              <h3><span class="condition">{{displayTool.condition}} Condition</span>
+            <div class="card-body card-content">
+              <div>
+                <h3><span class="condition">{{displayTool.condition}} Condition</span>
                 <span class="year-made">Year Manufactured: {{displayTool.manufactureYear}}</span></h3><br>
-              <p class="card-text ">
-                {{displayTool.description}}
-              </p>
+              </div>
+              <br>
+              <div class='tool-info'>
+                <p class="card-text">{{displayTool.description}}</p>
+              </div>
             </div>
           </div>
           <div class="card-footer text-dark bg-warning">
-            <span class="owner">Lender: {{displayTool.user.username}}&nbsp;&nbsp;</span>
+            <span class="owner"><h3><strong>Lender: {{displayTool.user.username | titlecase}}&nbsp;&nbsp;</strong></h3></span>
             <span class="stars">
               <!-- <star-rating value="4" checkedcolor="yellow"
                 uncheckedcolor="black" size="flex" readonly="true"></star-rating> -->
@@ -40,9 +42,9 @@
 
     <div id="listToolRentals" *ngFor="let rental of listOfToolRentalsContainingTool">
       <div class="row">
-        <div class="col-fluid">
+        <div class="col-sm-12">
           <div class="card" *ngIf="rental.renterReview.toolReview !== null || rental.renterReview.lenderReview !== null">
-            <h3 class="card-header text-dark bg-dark">
+            <h3 class="card-header">
               <span class="reviewer-name">{{rental.renter.firstName}}'s Review</span>
             </h3>
             <div class="card-horizontal">

@@ -1,6 +1,14 @@
-.card-horizontal {
+.card {
+  padding: 0px;
+}
+.card-horizontal.medium, .card-horizontal.large {
+  width: 100%;
   display: flex;
   flex: 1 1 auto;
+}
+.medium, .large, img {
+  display: flex;
+  float: left;
 }
 span {
   color: #3D3B3D;
@@ -16,24 +24,65 @@ span.tool-name {
 .cost {
   float: right;
 }
-.year-made {
+.year-made, .medium, .large {
   float: right;
+}
+.condition, .medium, .large {
+  float: left;
 }
 .owner {
   float: left;
 }
+
 .reviewer-name {
   color: #dfa000;
 }
 
-.col-fluid {
-  width: 100%;
+.col-sm-12 {
+  padding: 0px;
 }
 
-.card-body {
-  background-color: rgb(52, 52, 52);
+#listToolRentals .card-body{
+  background-color: #F2EBE4;
+  color:#3D3B3D;
+}
+
+#listToolRentals .card-header{
+  background-color: #3D3B3D;
 }
 
 .card-text, .condition, .year-made {
-  color: white;
+  color:#3D3B3D;
+  font-weight: bold;
+}
+@media only screen and (min-width: 601px) {
+  .card.responsive-horizontal {
+    display: flex;
+  }
+  .card.responsive-horizontal.small .card-image {
+    height: 100%;
+    max-height: none;
+    overflow: visible;
+  }
+  .card.responsive-horizontal.small .card-image img {
+    max-height: 100%;
+    width: 100%;
+  }
+  // .card.responsive-horizontal .card-image {
+  //   max-width: 50%;
+  // }
+  .card.responsive-horizontal .card-image img {
+    border-radius: 2px 0 0 2px;
+    width: auto;
+    max-width: 100%;
+  }
+  .card.responsive-horizontal .card-stacked {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .card.responsive-horizontal .card-stacked .card-content {
+    flex-grow: 1;
+  }
 }
